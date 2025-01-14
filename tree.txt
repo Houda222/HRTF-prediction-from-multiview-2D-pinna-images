@@ -1,0 +1,96 @@
+.
+├── 3DHRTF.py
+├── best_onefreq_centered_model_unfrozen.pth
+├── checkpoints
+│   └── depth_anything_v2_vitl.pth
+├── depth_anything_v2
+│   ├── dinov2_layers
+│   │   ├── attention.py
+│   │   ├── block.py
+│   │   ├── drop_path.py
+│   │   ├── __init__.py
+│   │   ├── layer_scale.py
+│   │   ├── mlp.py
+│   │   ├── patch_embed.py
+│   │   ├── __pycache__
+│   │   │   ├── attention.cpython-310.pyc
+│   │   │   ├── block.cpython-310.pyc
+│   │   │   ├── drop_path.cpython-310.pyc
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── layer_scale.cpython-310.pyc
+│   │   │   ├── mlp.cpython-310.pyc
+│   │   │   ├── patch_embed.cpython-310.pyc
+│   │   │   └── swiglu_ffn.cpython-310.pyc
+│   │   └── swiglu_ffn.py
+│   ├── dinov2.py
+│   ├── dpt.py
+│   ├── __pycache__
+│   │   ├── dinov2.cpython-310.pyc
+│   │   └── dpt.cpython-310.pyc
+│   └── util
+│       ├── blocks.py
+│       ├── __pycache__
+│       │   ├── blocks.cpython-310.pyc
+│       │   └── transform.cpython-310.pyc
+│       └── transform.py
+├── HRTFNet_onefreq.py
+├── inference.py
+├── __init__.py
+├── mean_hrtf.pt
+├── metrics.py
+├── models.py
+├── onefreqmodel.ipynb
+├── pointNet_utils.py
+├── __pycache__
+│   ├── dinov2.cpython-310.pyc
+│   ├── dpt.cpython-310.pyc
+│   ├── HRTFNet_onefreq.cpython-310.pyc
+│   ├── models.cpython-310.pyc
+│   └── pointNet_utils.cpython-310.pyc
+├── readME.md
+├── requirements.txt
+├── test_data
+│   ├── P0002_left_0.png
+│   ├── P0002_left_10.png
+│   ├── P0002_left_11.png
+│   ├── P0002_left_12.png
+│   ├── P0002_left_13.png
+│   ├── P0002_left_14.png
+│   ├── P0002_left_15.png
+│   ├── P0002_left_16.png
+│   ├── P0002_left_17.png
+│   ├── P0002_left_18.png
+│   ├── P0002_left_1.png
+│   ├── P0002_left_2.png
+│   ├── P0002_left_3.png
+│   ├── P0002_left_4.png
+│   ├── P0002_left_5.png
+│   ├── P0002_left_6.png
+│   ├── P0002_left_7.png
+│   ├── P0002_left_8.png
+│   ├── P0002_left_9.png
+│   ├── P0002_right_0.png
+│   ├── P0002_right_10.png
+│   ├── P0002_right_11.png
+│   ├── P0002_right_12.png
+│   ├── P0002_right_13.png
+│   ├── P0002_right_14.png
+│   ├── P0002_right_15.png
+│   ├── P0002_right_16.png
+│   ├── P0002_right_17.png
+│   ├── P0002_right_18.png
+│   ├── P0002_right_1.png
+│   ├── P0002_right_2.png
+│   ├── P0002_right_3.png
+│   ├── P0002_right_4.png
+│   ├── P0002_right_5.png
+│   ├── P0002_right_6.png
+│   ├── P0002_right_7.png
+│   ├── P0002_right_8.png
+│   └── P0002_right_9.png
+├── test_output.sofa
+├── test.py
+├── tree.txt
+└── utils_d.py
+
+9 directories, 84 files
