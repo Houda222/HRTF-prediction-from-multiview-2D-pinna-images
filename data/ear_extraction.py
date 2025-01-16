@@ -3,12 +3,6 @@ import open3d as o3d
 import os
 from sklearn.neighbors import NearestNeighbors
 
-# point_cloud_file = "/autofs/thau00a/home/hghallab/hghallab/comp/Huawei/TechArena20241016/data/P0011-P0020/P0011/3DSCAN/P0011_Project1.asc"
-
-# ref_point_data = np.loadtxt(point_cloud_file)
-# reference_points = ref_point_data[:, :3]
-# reference_normals = ref_point_data[:, 3:]
-
 
 def find_ear_centers_basic(points):
     """Find ear centers based on comparing y and z ranges"""
@@ -102,31 +96,10 @@ def create_ear_ranges(center, r=60):
         'z_max': center[2] + r
     }
 
-# def create_ear_ranges(center, r=60):
-#     """Create bounding box range around ear center"""
-#     return {
-#         'x_min':  -3.44946 - r,
-#         'x_max':  -3.44946 + r,
-#         'y_min': 30- r,
-#         'y_max': 30+ r,
-#         'z_min': center[2] - r*0.5,
-#         'z_max': center[2] + r*2
-#     }
-
- 
-
-# left_ear_center = np.array([-20, -40, 400])
-# right_ear_center = np.array([-20, 100, 540])
 
 # Create the output directory if it doesn't exist
 output_dir = "/autofs/thau04b/hghallab/comp/Huawei/TechArena20241016/ears"
-# os.makedirs(output_dir, exist_ok=True)
-patient_id = 4
-patient_str = f"P{patient_id:04d}"
-folder_range_start = (patient_id - 1) // 10 * 10 + 1
-folder_range_end = folder_range_start + 9
-folder_str = f"P{folder_range_start:04d}-P{folder_range_end:04d}"
-point_cloud_file = f"/autofs/thau04b/hghallab/comp/Huawei/TechArena20241016/data/{folder_str}/{patient_str}/3DSCAN/{patient_str}_Project1.asc"
+os.makedirs(output_dir, exist_ok=True)
 
 def create_mask(points, coord_range):
     # Create boolean masks for each coordinate axis
@@ -137,42 +110,6 @@ def create_mask(points, coord_range):
     # Combine masks to get the final mask
     mask = x_mask & y_mask & z_mask
     return mask
-
-# Load point cloud
-point_data = np.loadtxt(point_cloud_file)
-points = point_data[:, :3]
-normals = point_data[:, 3:]
-left_ear_center, right_ear_center = find_ear_centers_basic(points)
-print(left_ear_center, right_ear_center)
-# Find ear centers and create ranges
-left_ear_range = create_ear_ranges(left_ear_center)
-right_ear_range = create_ear_ranges(right_ear_center)
-# Create masks and filter points
-left_mask = create_mask(points, left_ear_range)
-right_mask = create_mask(points, right_ear_range)
-
-left_points = points[left_mask]
-left_normals = normals[left_mask]
-right_points = points[right_mask]
-right_normals = normals[right_mask]
-
-# Create and save point clouds
-left_point_cloud = o3d.geometry.PointCloud()
-left_point_cloud.points = o3d.utility.Vector3dVector(left_points)
-left_point_cloud.normals = o3d.utility.Vector3dVector(left_normals)
-
-right_point_cloud = o3d.geometry.PointCloud()
-right_point_cloud.points = o3d.utility.Vector3dVector(right_points)
-right_point_cloud.normals = o3d.utility.Vector3dVector(right_normals)
-
-# Save point clouds
-left_output_path = os.path.join(output_dir, f"{patient_str}_left.ply")
-right_output_path = os.path.join(output_dir, f"{patient_str}_right.ply")
-
-o3d.io.write_point_cloud(left_output_path, left_point_cloud)
-o3d.io.write_point_cloud(right_output_path, right_point_cloud)
-
-print(f"Processed {patient_str}")
 
 # Iterate over all patients
 # patient_ids = [

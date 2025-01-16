@@ -1,4 +1,4 @@
-from models import PointNetFeatureExtractor, Generator
+from model.models import PointNetFeatureExtractor, Generator
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -44,13 +44,6 @@ class MultiViewHRTFPredictionModel(nn.Module):
         self.mid_channel = 2048 + 16  # ear features + frequency embedding
         self.regression = nn.Sequential(
             nn.Linear(self.mid_channel, 1024),
-            # nn.BatchNorm1d(1024),
-            # nn.ReLU(),
-            # nn.Linear(1024, 1024),
-            # nn.BatchNorm1d(1024),
-            # nn.ReLU(),
-            # nn.Linear(1024, 1024),
-            # nn.BatchNorm1d(1024),
             nn.ReLU(),
             nn.Linear(1024, 793 * 2 * 2)  # [positions, ears, mag/phase]
         )
@@ -100,10 +93,6 @@ class MultiViewHRTFPredictionModel(nn.Module):
             
             # Combine features
             combined_features = torch.cat([ear_features, freq_encoding], dim=1)
-            # Additional feature fusion layers
-            # fused_features = F.relu(nn.BatchNorm1d(self.mid_channel).to(combined_features.device)(combined_features))
-            # fused_features = F.relu(nn.Linear(self.mid_channel, self.mid_channel).to(fused_features.device)(fused_features))
-            # combined_features = fused_features
             # Predict magnitude and phase together
             predictions = self.regression(combined_features)
             predictions = predictions.view(batch_size, 793, 2, 2)  # [batch, positions, ears, mag/phase]

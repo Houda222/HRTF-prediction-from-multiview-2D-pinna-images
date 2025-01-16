@@ -1,8 +1,10 @@
-xformers
-gradio_imageslider
-gradio==4.29.0
-matplotlib
-opencv-python
 torch
 torchvision
+xformers
+
+matplotlib
+opencv-python
 sofar
+open3d
+numpy
+learning3d

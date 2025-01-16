@@ -1,15 +1,13 @@
 import argparse
-import os
-from matplotlib import pyplot as plt
 import sofar
 import torch
 import numpy as np
 import open3d as o3d
 import cv2
 import sys
-# sys.path.append('/mnt/thau04b/hghallab/comp/Huawei/TechArena20241016/depth_estimation/Depth-Anything-V2/depth_anything_v2')
-from depth_anything_v2.dpt import DepthAnythingV2
-from HRTFNet_onefreq import MultiViewHRTFPredictionModel
+sys.path.append('.')
+from model.depth_anything_v2.dpt import DepthAnythingV2
+from model.HRTFNet_onefreq import MultiViewHRTFPredictionModel
 
 class HRTFPredictor:
     VIEW_OPTIONS = {
@@ -23,7 +21,7 @@ class HRTFPredictor:
         
         # Load depth model
         self.depth_model = DepthAnythingV2(encoder='vitl', features=256, out_channels=[256, 512, 1024, 1024])
-        self.depth_model.load_state_dict(torch.load('checkpoints/depth_anything_v2_vitl.pth', map_location='cpu'))
+        self.depth_model.load_state_dict(torch.load('./checkpoints/depth_anything_v2_vitl.pth', map_location='cpu'))
         self.depth_model.eval().to(self.device)
         
         # Load HRTF model
@@ -32,7 +30,7 @@ class HRTFPredictor:
             self.model.load_state_dict(torch.load(model_path, map_location=self.device))
         self.model.eval()
         
-        self.mean_hrtf = torch.load('mean_hrtf.pt').to(self.device)
+        self.mean_hrtf = torch.load('./checkpoints/mean_hrtf.pt', map_location=self.device).to(self.device)
     
         
         self.num_views_total = 19

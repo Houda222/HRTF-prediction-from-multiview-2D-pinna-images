@@ -62,7 +62,7 @@ def main():
     ]
     
     # Path to model weights 
-    model_path = '/mnt/thau04b/hghallab/comp/Submission/HRTFNet.pth'
+    model_path = './checkpoints/HRTFNet.pth'
     # Output path
     output_path = 'test_output.sofa'
 
@@ -103,7 +103,7 @@ def main():
     print(f"\033[93m{os.getcwd()}\033[0m")
     for idx, test_case in enumerate(test_cases):
         print(f"\n\033[96m=== Test Case {idx + 1}: {test_case['description']} ===\033[0m")
-        command = [sys.executable, 'inference.py',
+        command = [sys.executable, './scripts/inference.py',
                    '-l'] + test_case['left'] + \
                   ['-r'] + test_case['right'] + \
                   ['-o', output_path,
