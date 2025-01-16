@@ -147,4 +147,3 @@ utils_d.py: Utility functions and dataset class SonicomDatabase.
             pointNet_utils.cpython-39.pyc
 
 
-We really liked the project and we are working on another method, that looks promising, and that we are very close to finish but couldn't due too time constraints. If it works, we can submit it later.
