@@ -1,149 +1,64 @@
+# Individualized HRTF Prediction from Multiview 2D Ear Images
 
-Start by installing necessary packages in requirements.txt:
+This repository contains the code and resources for predicting individualized Head-Related Transfer Functions (HRTFs) from multiview 2D images of the ear. This project was developed as part of the **Munich Tech Arena 2024** organized by **Huawei**, where it secured the **3rd prize**.
 
-    pip install -r requirements.txt
+The repository includes scripts for training, inference, and evaluation, as well as utility functions and datasets.
 
-Next, follow the instructions provided in the github repository of DepthAnything Model.
-https://github.com/DepthAnything/Depth-Anything-V2.git 
+This project was developped by Anas EZZAKRI & Houda GHALLAB.
 
-To run the model, run the file inference.py
+![Alt text](images/pipeline.png)
 
->>>>>> Notebooks:
-training.ipynb: Jupyter notebook for training and evaluating the HRTF prediction model.
+---
 
->>>>>> Scripts:
-3DHRTF.py: model for 3D to HRTF.
-HRTFNet_onefreq.py: Contains the HRTFNet class.
-inference.py: Script for running inference.
-metrics.py: Contains metric functions.
-models.py: Contains models classes used in HRTFNet.
-pointNet_utils.py: Utility functions for PointNet.
-utils_d.py: Utility functions and dataset class SonicomDatabase.
+## Table of Contents
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Repository Structure](#repository-structure)
+4. [References](#references)
 
-|   .gitignore
-|   README.md
-|   requirements.txt
-|   test_output.sofa
-|   tree.txt
-|   __init__.py
-|
-+---checkpoints
-|       depth_anything_v2_vitl.pth
-|       HRTFNet.pth
-|       mean_hrtf.pt
-|
-+---data
-|       ear_extraction.py
-|       EDA.ipynb
-|
-+---model
-|   |   3DHRTF.py
-|   |   HRTFNet_onefreq.py
-|   |   models.py
-|   |
-|   +---depth_anything_v2
-|   |   |   dinov2.py
-|   |   |   dpt.py
-|   |   |
-|   |   +---dinov2_layers
-|   |   |   |   attention.py
-|   |   |   |   block.py
-|   |   |   |   drop_path.py
-|   |   |   |   layer_scale.py
-|   |   |   |   mlp.py
-|   |   |   |   patch_embed.py
-|   |   |   |   swiglu_ffn.py
-|   |   |   |   __init__.py
-|   |   |   |
-|   |   |   \---__pycache__
-|   |   |           attention.cpython-310.pyc
-|   |   |           attention.cpython-39.pyc
-|   |   |           block.cpython-310.pyc
-|   |   |           block.cpython-39.pyc
-|   |   |           drop_path.cpython-310.pyc
-|   |   |           drop_path.cpython-39.pyc
-|   |   |           layer_scale.cpython-310.pyc
-|   |   |           layer_scale.cpython-39.pyc
-|   |   |           mlp.cpython-310.pyc
-|   |   |           mlp.cpython-39.pyc
-|   |   |           patch_embed.cpython-310.pyc
-|   |   |           patch_embed.cpython-39.pyc
-|   |   |           swiglu_ffn.cpython-310.pyc
-|   |   |           swiglu_ffn.cpython-39.pyc
-|   |   |           __init__.cpython-310.pyc
-|   |   |           __init__.cpython-39.pyc
-|   |   |
-|   |   +---util
-|   |   |   |   blocks.py
-|   |   |   |   transform.py
-|   |   |   |
-|   |   |   \---__pycache__
-|   |   |           blocks.cpython-310.pyc
-|   |   |           blocks.cpython-39.pyc
-|   |   |           transform.cpython-310.pyc
-|   |   |           transform.cpython-39.pyc
-|   |   |
-|   |   \---__pycache__
-|   |           dinov2.cpython-310.pyc
-|   |           dinov2.cpython-39.pyc
-|   |           dpt.cpython-310.pyc
-|   |           dpt.cpython-39.pyc
-|   |
-|   \---__pycache__
-|           HRTFNet_onefreq.cpython-39.pyc
-|           models.cpython-39.pyc
-|
-+---scripts
-|       inference.py
-|       test.py
-|       training.ipynb
-|
-+---test_data
-|       P0002_left_0.png
-|       P0002_left_1.png
-|       P0002_left_10.png
-|       P0002_left_11.png
-|       P0002_left_12.png
-|       P0002_left_13.png
-|       P0002_left_14.png
-|       P0002_left_15.png
-|       P0002_left_16.png
-|       P0002_left_17.png
-|       P0002_left_18.png
-|       P0002_left_2.png
-|       P0002_left_3.png
-|       P0002_left_4.png
-|       P0002_left_5.png
-|       P0002_left_6.png
-|       P0002_left_7.png
-|       P0002_left_8.png
-|       P0002_left_9.png
-|       P0002_right_0.png
-|       P0002_right_1.png
-|       P0002_right_10.png
-|       P0002_right_11.png
-|       P0002_right_12.png
-|       P0002_right_13.png
-|       P0002_right_14.png
-|       P0002_right_15.png
-|       P0002_right_16.png
-|       P0002_right_17.png
-|       P0002_right_18.png
-|       P0002_right_2.png
-|       P0002_right_3.png
-|       P0002_right_4.png
-|       P0002_right_5.png
-|       P0002_right_6.png
-|       P0002_right_7.png
-|       P0002_right_8.png
-|       P0002_right_9.png
-|
-\---utils
-    |   metrics.py
-    |   pointNet_utils.py
-    |   utils_d.py
-    |
-    \---__pycache__
-            pointNet_utils.cpython-39.pyc
+---
 
+## Installation
 
+To get started, install the necessary dependencies listed in `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+Next, follow the instructions provided in the official DepthAnything-V2 repository to set up the depth estimation model.
+
+## Usage
+To run the HRTF prediction model, run the file inference.py and execute the following script:
+
+## Repository Structure
+.
+├── checkpoints/               # Pre-trained model checkpoints
+│   ├── depth_anything_v2_vitl.pth
+│   ├── HRTFNet.pth
+│   └── mean_hrtf.pt
+├── data/                      # Data processing scripts and exploratory analysis
+│   ├── ear_extraction.py
+│   └── EDA.ipynb
+├── model/                     # Model definitions and utilities
+│   ├── 3DHRTF.py
+│   ├── HRTFNet_onefreq.py
+│   ├── models.py
+│   └── depth_anything_v2/     # DepthAnything-V2 model files
+├── scripts/                   # Main scripts for training and inference
+│   ├── inference.py
+│   ├── test.py
+│   └── training.ipynb
+├── test_data/                 # Sample test images for inference
+├── utils/                     # Utility functions and metrics
+│   ├── metrics.py
+│   ├── pointNet_utils.py
+│   └── utils_d.py
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── test_output.sofa
+├── tree.txt
+└── __init__.py
+
+## References
