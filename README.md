@@ -6,6 +6,7 @@ The repository includes scripts for training, inference, and evaluation, as well
 
 This project was developped by Anas EZZAKRI & Houda GHALLAB, two final year engineering students at IMT Atlantique, France.
 
+Below is the pipeline of the proposed solution:
 ![Alt text](images/pipeline.png)
 
 ---
@@ -23,14 +24,29 @@ This project was developped by Anas EZZAKRI & Houda GHALLAB, two final year engi
 To get started, install the necessary dependencies listed in `requirements.txt`:
 
 ```bash
+cd HRTF-prediction-from-multiview-2D-pinna-images
+```
+```bash
 pip install -r requirements.txt
 ```
 
 Next, follow the instructions provided in the official DepthAnything-V2 repository to set up the depth estimation model.
 
 ## Usage
+The model can take either 3, 7 or 19 images per ear per individual, and produce a sofa file where the HRTF prediction results are stored.
+
 To run the HRTF prediction model, run the file inference.py and execute the following script:
 
+```
+python3 inference.py -l IMAGE_PATH [IMAGE_PATH ...] -r IMAGE_PATH [IMAGE_PATH ...] -o SOFA_PATH
+```
+
+Example:
+```
+python3 inference.py -l ./data/SONICOM_TestData_pics/P0002_left_0.png ./data/SONICOM_TestData_pics/P0002_left_1.png -r ./data/SONICOM_TestData_pics/P0002_right_0.png ./data/SONICOM_TestData_pics/P0002_right_1.png -o ./data/output/prediction.sofa
+```
+
+he required options `-l` and `-r` are followed by one or more file paths of left and right pinna images, respectively. The required option `-o` is followed by a single path for the SOFA HRTF output file.
 ## Repository Structure
 .
 ├── checkpoints/               # Pre-trained model checkpoints
@@ -60,5 +76,13 @@ To run the HRTF prediction model, run the file inference.py and execute the foll
 ├── test_output.sofa
 ├── tree.txt
 └── __init__.py
+
+Important files are:
+-> 3DHRTF.py: model to predict HRTF from 3D scans: Feature extractor + regressor.
+-> HRTFNet_onefreq.py: main model to predict HRTF from 2D images.
+-> inference.py: pipeline to test the model.
+-> test.py: test for the inference file.
+-> training.ipynb: training notebook for models.
+
 
 ## References
