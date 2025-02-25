@@ -46,7 +46,7 @@ Example:
 python3 inference.py -l ./data/SONICOM_TestData_pics/P0002_left_0.png ./data/SONICOM_TestData_pics/P0002_left_1.png -r ./data/SONICOM_TestData_pics/P0002_right_0.png ./data/SONICOM_TestData_pics/P0002_right_1.png -o ./data/output/prediction.sofa
 ```
 
-he required options `-l` and `-r` are followed by one or more file paths of left and right pinna images, respectively. The required option `-o` is followed by a single path for the SOFA HRTF output file.
+The required options `-l` and `-r` are followed by one or more file paths of left and right pinna images, respectively. The required option `-o` is followed by a single path for the SOFA HRTF output file.
 ## Repository Structure
 .
 ├── checkpoints/               # Pre-trained model checkpoints
@@ -86,3 +86,10 @@ Important files are:
 
 
 ## References
+| #   | Title                              | Authors          | Link                          |
+|-----|------------------------------------|------------------|-------------------------------|
+| [1] | PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space
+                | Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas | [arXiv](https://arxiv.org/abs/1706.02413) |
+| [2] | Dynamic Graph CNN for Learning on Point Clouds
+                   | Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon
+      | [arXiv](https://arxiv.org/abs/1801.07829) |
