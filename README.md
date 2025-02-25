@@ -80,11 +80,11 @@ The required options `-l` and `-r` are followed by one or more file paths of lef
 ```
 
 Important files are:
--> 3DHRTF.py: model to predict HRTF from 3D scans: Feature extractor + regressor.
--> HRTFNet_onefreq.py: main model to predict HRTF from 2D images.
--> inference.py: pipeline to test the model.
--> test.py: test for the inference file.
--> training.ipynb: training notebook for models.
+1. 3DHRTF.py: model to predict HRTF from 3D scans: Feature extractor + regressor.
+2. HRTFNet_onefreq.py: main model to predict HRTF from 2D images.
+3. inference.py: pipeline to test the model.
+4. test.py: test for the inference file.
+5. training.ipynb: training notebook for models.
 
 
 ## References
