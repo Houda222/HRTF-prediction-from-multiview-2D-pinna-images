@@ -48,6 +48,7 @@ python3 inference.py -l ./data/SONICOM_TestData_pics/P0002_left_0.png ./data/SON
 
 The required options `-l` and `-r` are followed by one or more file paths of left and right pinna images, respectively. The required option `-o` is followed by a single path for the SOFA HRTF output file.
 ## Repository Structure
+```plaintext
 .
 ├── checkpoints/               # Pre-trained model checkpoints
 │   ├── depth_anything_v2_vitl.pth
@@ -76,6 +77,7 @@ The required options `-l` and `-r` are followed by one or more file paths of lef
 ├── test_output.sofa
 ├── tree.txt
 └── __init__.py
+```
 
 Important files are:
 -> 3DHRTF.py: model to predict HRTF from 3D scans: Feature extractor + regressor.
@@ -88,8 +90,5 @@ Important files are:
 ## References
 | #   | Title                              | Authors          | Link                          |
 |-----|------------------------------------|------------------|-------------------------------|
-| [1] | PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space
-                | Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas | [arXiv](https://arxiv.org/abs/1706.02413) |
-| [2] | Dynamic Graph CNN for Learning on Point Clouds
-                   | Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon
-      | [arXiv](https://arxiv.org/abs/1801.07829) |
+| [1] | PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space | Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas                                           | [arXiv](https://arxiv.org/abs/1706.02413) |
+| [2] | Dynamic Graph CNN for Learning on Point Clouds                                 | Yue Wang, Yongbin Sun, Ziwei Liu, Sanjay E. Sarma, Michael M. Bronstein, Justin M. Solomon | [arXiv](https://arxiv.org/abs/1801.07829) |
