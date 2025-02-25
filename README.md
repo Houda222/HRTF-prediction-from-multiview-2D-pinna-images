@@ -4,7 +4,7 @@ This repository contains the code and resources for predicting individualized He
 
 The repository includes scripts for training, inference, and evaluation, as well as utility functions and datasets.
 
-This project was developped by Anas EZZAKRI & Houda GHALLAB.
+This project was developped by Anas EZZAKRI & Houda GHALLAB, two final year engineering students at IMT Atlantique, France.
 
 ![Alt text](images/pipeline.png)
 
